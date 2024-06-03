@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple de Consentement de Cookies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #consent-banner {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+        }
+
+        #consent-banner button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>Bienvenue sur notre site</h1>
+<p>Ce site utilise des cookies pour améliorer votre expérience.</p>
+
+<div id="consent-banner" style="display: <%= consentMessage ? 'block' : 'none' %>;">
+    <form method="POST" action="/consent" style="display: inline;">
+        <span id="consent-message"><%= consentMessage %></span>
+        <button name="consent" value="yes"><%= acceptText %></button>
+        <button name="consent" value="no"><%= rejectText %></button>
+    </form>
+</div>
+
+<script src="/consent.js"></script>
+</body>
+</html>
